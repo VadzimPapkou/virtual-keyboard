@@ -38,3 +38,7 @@
   left: 4px;
   font-size: 16px;
 }
+
+.keyboard__btn--pressed {
+  background-color: blue;
+}
