@@ -1,0 +1,32 @@
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(15, 50px);
+  grid-auto-rows: 50px;
+  grid-gap: 6px;
+}
+
+.keyboard__btn {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #ccc;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.keyboard__btn:hover {
+  filter: brightness(120%);
+}
+
+.keyboard__btn--2-columns {
+  grid-column: span 2;
+}
+
+.keyboard__btn--6-columns {
+  grid-column: span 6;
+}
+
+.keyboard__btn--service-btn {
+  color: #eee;
+  background-color: #555;
+}
