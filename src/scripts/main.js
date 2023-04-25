@@ -20,7 +20,7 @@ for(let keyboardBtn of keyboardBtns) {
 }
 
 document.body.addEventListener("keydown", e => {
-  console.log(e);
+  console.log(e.code);
   buttons[e.code].$el.classList.add("keyboard__btn--pressed");
 });
 
