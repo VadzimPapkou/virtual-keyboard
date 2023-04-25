@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.keyboard__btn:hover {
+.keyboard__btn:hover:not(:active) {
   filter: brightness(120%);
 }
 
@@ -41,4 +41,5 @@
 
 .keyboard__btn--pressed {
   background-color: blue;
+  color: #fff;
 }
