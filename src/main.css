@@ -1,4 +1,13 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
 .keyboard {
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(15, 50px);
   grid-auto-rows: 50px;
@@ -42,4 +51,9 @@
 .keyboard__btn--pressed {
   background-color: blue;
   color: #fff;
+}
+
+.keyboard-output {
+  width: 600px;
+  min-height: 300px;
 }

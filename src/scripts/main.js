@@ -1,16 +1,17 @@
 import createKeyboard from "./createKeyboard.js";
-
-
-const buttons = {
-
-};
-
-setTimeout(() => {
-  console.clear();
-})
+import createTextarea from "./createTextarea.js";
 
 const $keyboard = createKeyboard();
-document.body.append($keyboard);
+const $textarea = createTextarea();
+const $app = document.createElement("div");
+$app.className = "app";
+$app.append(
+  $textarea,
+  $keyboard
+);
+document.body.append($app);
+
+const buttons = {};
 
 const keyboardBtns = $keyboard.querySelectorAll(".keyboard__btn");
 
