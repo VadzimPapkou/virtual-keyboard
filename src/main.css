@@ -6,6 +6,7 @@
 }
 
 .keyboard__btn {
+  position: relative;
   font-family: Arial, sans-serif;
   font-size: 18px;
   color: #ccc;
@@ -29,4 +30,11 @@
 .keyboard__btn--service-btn {
   color: #eee;
   background-color: #555;
+}
+
+.keyboard__btn__additional-char {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 16px;
 }
