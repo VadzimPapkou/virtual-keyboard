@@ -5,6 +5,10 @@ const buttons = {
 
 };
 
+setTimeout(() => {
+  console.clear();
+})
+
 const $keyboard = createKeyboard();
 document.body.append($keyboard);
 
@@ -20,7 +24,6 @@ for(let keyboardBtn of keyboardBtns) {
 }
 
 document.body.addEventListener("keydown", e => {
-  console.log(e.code);
   buttons[e.code].$el.classList.add("keyboard__btn--pressed");
 });
 
@@ -28,20 +31,22 @@ document.body.addEventListener("keyup", e => {
   buttons[e.code].$el.classList.remove("keyboard__btn--pressed");
 });
 
+let $lastPressedBtn = null;
+
 document.addEventListener("mousedown", e => {
   const btnOrNot = isOrInside(e.target, ".keyboard__btn")
   if(!btnOrNot) return;
 
   const $btn = btnOrNot;
   $btn.classList.add("keyboard__btn--pressed");
+  $lastPressedBtn = $btn;
 });
 
 document.addEventListener("mouseup", e => {
-  const btnOrNot = isOrInside(e.target, ".keyboard__btn")
-  if(!btnOrNot) return;
+  if(!$lastPressedBtn) return;
 
-  const $btn = btnOrNot;
-  $btn.classList.remove("keyboard__btn--pressed");
+  $lastPressedBtn.classList.remove("keyboard__btn--pressed");
+  $lastPressedBtn = null;
 });
 
 function isOrInside($el, selector) {
