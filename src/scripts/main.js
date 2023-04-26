@@ -14,6 +14,10 @@ $app.append(
 );
 document.body.append($app);
 
+if(localStorage.getItem("lang")) {
+  $keyboard.dataset.lang = localStorage.getItem("lang");
+}
+
 const buttons = {};
 
 const keyboardBtns = $keyboard.querySelectorAll(".keyboard-btn");
@@ -67,5 +71,6 @@ function isOrInside($el, selector) {
 document.body.addEventListener("keydown", e => {
   if(e.key === "Shift" && e.ctrlKey || e.key === "Control" && e.shiftKey) {
     $keyboard.dataset.lang = $keyboard.dataset.lang === "rus" ? "eng" : "rus";
+    localStorage.setItem("lang", $keyboard.dataset.lang);
   }
-})
+});
