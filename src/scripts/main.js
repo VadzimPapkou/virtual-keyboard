@@ -1,11 +1,14 @@
 import createKeyboard from "./createKeyboard.js";
 import createTextarea from "./createTextarea.js";
+import createSwitchLangHint from "./createHint.js";
 
 const $keyboard = createKeyboard();
 const $textarea = createTextarea();
+const $switchLangHint = createSwitchLangHint();
 const $app = document.createElement("div");
 $app.className = "app";
 $app.append(
+  $switchLangHint,
   $textarea,
   $keyboard
 );
@@ -13,7 +16,7 @@ document.body.append($app);
 
 const buttons = {};
 
-const keyboardBtns = $keyboard.querySelectorAll(".keyboard__btn");
+const keyboardBtns = $keyboard.querySelectorAll(".keyboard-btn");
 
 for(let keyboardBtn of keyboardBtns) {
   const code = keyboardBtn.dataset.code;
@@ -25,29 +28,29 @@ for(let keyboardBtn of keyboardBtns) {
 }
 
 document.body.addEventListener("keydown", e => {
-  buttons[e.code].$el.classList.add("keyboard__btn--pressed");
+  buttons[e.code].$el.classList.add("keyboard-btn--pressed");
   console.log(e)
 });
 
 document.body.addEventListener("keyup", e => {
-  buttons[e.code].$el.classList.remove("keyboard__btn--pressed");
+  buttons[e.code].$el.classList.remove("keyboard-btn--pressed");
 });
 
 let $lastPressedBtn = null;
 
 document.addEventListener("mousedown", e => {
-  const btnOrNot = isOrInside(e.target, ".keyboard__btn")
-  if(!btnOrNot) return;
+  const btnOrNot = isOrInside(e.target, ".keyboard-btn")
+  if(!btnOrNot || !e.target.closest(".keyboard")) return;
 
   const $btn = btnOrNot;
-  $btn.classList.add("keyboard__btn--pressed");
+  $btn.classList.add("keyboard-btn--pressed");
   $lastPressedBtn = $btn;
 });
 
 document.addEventListener("mouseup", e => {
   if(!$lastPressedBtn) return;
 
-  $lastPressedBtn.classList.remove("keyboard__btn--pressed");
+  $lastPressedBtn.classList.remove("keyboard-btn--pressed");
   $lastPressedBtn = null;
 });
 
