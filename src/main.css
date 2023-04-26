@@ -14,6 +14,18 @@
   grid-gap: 6px;
 }
 
+.keyboard [data-lang] {
+  display: none;
+}
+
+.keyboard[data-lang=eng] [data-lang=eng] {
+  display: block;
+}
+
+.keyboard[data-lang=rus] [data-lang=rus] {
+  display: block;
+}
+
 .keyboard__btn {
   position: relative;
   font-family: Arial, sans-serif;
