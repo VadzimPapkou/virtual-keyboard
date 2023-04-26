@@ -26,6 +26,7 @@ for(let keyboardBtn of keyboardBtns) {
 
 document.body.addEventListener("keydown", e => {
   buttons[e.code].$el.classList.add("keyboard__btn--pressed");
+  console.log(e)
 });
 
 document.body.addEventListener("keyup", e => {
@@ -59,3 +60,9 @@ function isOrInside($el, selector) {
     return false;
   }
 }
+
+document.body.addEventListener("keydown", e => {
+  if(e.key === "Shift" && e.ctrlKey || e.key === "Control" && e.shiftKey) {
+    $keyboard.dataset.lang = $keyboard.dataset.lang === "rus" ? "eng" : "rus";
+  }
+})
