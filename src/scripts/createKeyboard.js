@@ -218,3 +218,407 @@ export default function createKeyboard() {
 
   return $keyboard;
 }
+
+export const keys = {
+  Backquote: {
+    eng: {
+      key: "`",
+      additionalKey: "~",
+    },
+    rus: {
+      key: "Ё",
+    }
+  },
+  Digit1: {
+    eng: {
+      key: "1",
+      additionalKey: "!",
+    },
+    rus: {
+      key: "1",
+      additionalKey: "!"
+    }
+  },
+  Digit2: {
+    eng: {
+      key: "2",
+      additionalKey: "@",
+    },
+    rus: {
+      key: "2",
+      additionalKey: "\""
+    }
+  },
+  Digit3: {
+    eng: {
+      key: "3",
+      additionalKey: "#",
+    },
+    rus: {
+      key: "3",
+      additionalKey: "№"
+    }
+  },
+  Digit4: {
+    eng: {
+      key: "4",
+      additionalKey: "$",
+    },
+    rus: {
+      key: "4",
+      additionalKey: ";"
+    }
+  },
+  Digit5: {
+    eng: {
+      key: "5",
+      additionalKey: "%",
+    },
+    rus: {
+      key: "5",
+      additionalKey: "%"
+    }
+  },
+  Digit6: {
+    eng: {
+      key: "6",
+      additionalKey: "^",
+    },
+    rus: {
+      key: "6",
+      additionalKey: ":"
+    }
+  },
+  Digit7: {
+    eng: {
+      key: "7",
+      additionalKey: "&",
+    },
+    rus: {
+      key: "7",
+      additionalKey: "?"
+    }
+  },
+  Digit8: {
+    eng: {
+      key: "8",
+      additionalKey: "*",
+    },
+    rus: {
+      key: "8",
+      additionalKey: "*"
+    }
+  },
+  Digit9: {
+    eng: {
+      key: "9",
+      additionalKey: "(",
+    },
+    rus: {
+      key: "9",
+      additionalKey: "("
+    }
+  },
+  Digit0: {
+    eng: {
+      key: "0",
+      additionalKey: ")",
+    },
+    rus: {
+      key: "0",
+      additionalKey: ")"
+    }
+  },
+  Minus: {
+    eng: {
+      key: "-",
+      additionalKey: "_",
+    },
+    rus: {
+      key: "-",
+      additionalKey: "_"
+    }
+  },
+  Plus: {
+    eng: {
+      key: "+",
+      additionalKey: "=",
+    },
+    rus: {
+      key: "+",
+      additionalKey: "="
+    }
+  },
+  Backspace: {
+    eng: {
+      key: "Backspace",
+    },
+    rus: {
+      key: "Backspace",
+    },
+  },
+  "KeyQ": {
+    "eng": {
+      "key": "Q"
+    },
+    "rus": {
+      "key": "Й"
+    }
+  },
+  "KeyW": {
+    "eng": {
+      "key": "W"
+    },
+    "rus": {
+      "key": "Ц"
+    }
+  },
+  "KeyE": {
+    "eng": {
+      "key": "E"
+    },
+    "rus": {
+      "key": "У"
+    }
+  },
+  "KeyR": {
+    "eng": {
+      "key": "R"
+    },
+    "rus": {
+      "key": "К"
+    }
+  },
+  "KeyT": {
+    "eng": {
+      "key": "T"
+    },
+    "rus": {
+      "key": "Е"
+    }
+  },
+  "KeyY": {
+    "eng": {
+      "key": "Y"
+    },
+    "rus": {
+      "key": "Н"
+    }
+  },
+  "KeyU": {
+    "eng": {
+      "key": "U"
+    },
+    "rus": {
+      "key": "Г"
+    }
+  },
+  "KeyI": {
+    "eng": {
+      "key": "I"
+    },
+    "rus": {
+      "key": "Ш"
+    }
+  },
+  "KeyO": {
+    "eng": {
+      "key": "O"
+    },
+    "rus": {
+      "key": "Щ"
+    }
+  },
+  "KeyP": {
+    "eng": {
+      "key": "P"
+    },
+    "rus": {
+      "key": "З"
+    }
+  },
+  "BracketLeft": {
+    "eng": {
+      "key": "["
+    },
+    "rus": {
+      "key": "Х"
+    }
+  },
+  "BracketRight": {
+    "eng": {
+      "key": "]"
+    },
+    "rus": {
+      "key": "Ъ"
+    }
+  },
+  "KeyA": {
+    "eng": {
+      "key": "A"
+    },
+    "rus": {
+      "key": "Ф"
+    }
+  },
+  "KeyS": {
+    "eng": {
+      "key": "S"
+    },
+    "rus": {
+      "key": "Ы"
+    }
+  },
+  "KeyD": {
+    "eng": {
+      "key": "D"
+    },
+    "rus": {
+      "key": "В"
+    }
+  },
+  "KeyF": {
+    "eng": {
+      "key": "F"
+    },
+    "rus": {
+      "key": "А"
+    }
+  },
+  "KeyG": {
+    "eng": {
+      "key": "G"
+    },
+    "rus": {
+      "key": "П"
+    }
+  },
+  "KeyH": {
+    "eng": {
+      "key": "H"
+    },
+    "rus": {
+      "key": "Р"
+    }
+  },
+  "KeyJ": {
+    "eng": {
+      "key": "J"
+    },
+    "rus": {
+      "key": "О"
+    }
+  },
+  "KeyK": {
+    "eng": {
+      "key": "K"
+    },
+    "rus": {
+      "key": "Л"
+    }
+  },
+  "KeyL": {
+    "eng": {
+      "key": "L"
+    },
+    "rus": {
+      "key": "Д"
+    }
+  },
+  "Semicolon": {
+    "eng": {
+      "key": ";"
+    },
+    "rus": {
+      "key": "Ж"
+    }
+  },
+  "Quote": {
+    "eng": {
+      "key": "'"
+    },
+    "rus": {
+      "key": "Э"
+    }
+  },
+  "KeyZ": {
+    "eng": {
+      "key": "Z"
+    },
+    "rus": {
+      "key": "Я"
+    }
+  },
+  "KeyX": {
+    "eng": {
+      "key": "X"
+    },
+    "rus": {
+      "key": "Ч"
+    }
+  },
+  "KeyC": {
+    "eng": {
+      "key": "C"
+    },
+    "rus": {
+      "key": "С"
+    }
+  },
+  "KeyV": {
+    "eng": {
+      "key": "V"
+    },
+    "rus": {
+      "key": "М"
+    }
+  },
+  "KeyB": {
+    "eng": {
+      "key": "B"
+    },
+    "rus": {
+      "key": "И"
+    }
+  },
+  "KeyN": {
+    "eng": {
+      "key": "N"
+    },
+    "rus": {
+      "key": "Т"
+    }
+  },
+  "KeyM": {
+    "eng": {
+      "key": "M"
+    },
+    "rus": {
+      "key": "Ь"
+    }
+  },
+  "Comma": {
+    "eng": {
+      "key": ","
+    },
+    "rus": {
+      "key": "Б"
+    }
+  },
+  "Period": {
+    "eng": {
+      "key": "."
+    },
+    "rus": {
+      "key": "Ю"
+    }
+  },
+  "Slash": {
+    "eng": {
+      "key": "/"
+    },
+    "rus": {
+      "key": "."
+    }
+  }
+};

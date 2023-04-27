@@ -1,5 +1,5 @@
-import createKeyboard from "./createKeyboard.js";
-import createTextarea from "./createTextarea.js";
+import createKeyboard, {keys} from "./createKeyboard.js";
+import createTextarea, {TEXT_AREA_WIDTH} from "./createTextarea.js";
 import createSwitchLangHint from "./createHint.js";
 
 const $keyboard = createKeyboard();
@@ -33,7 +33,6 @@ for(let keyboardBtn of keyboardBtns) {
 
 document.body.addEventListener("keydown", e => {
   buttons[e.code].$el.classList.add("keyboard-btn--pressed");
-  console.log(e)
 });
 
 document.body.addEventListener("keyup", e => {
@@ -49,6 +48,11 @@ document.addEventListener("mousedown", e => {
   const $btn = btnOrNot;
   $btn.classList.add("keyboard-btn--pressed");
   $lastPressedBtn = $btn;
+
+  const currentLang = $keyboard.dataset.lang;
+  const code = $btn.dataset.code;
+
+  handleBtnPress($btn.dataset.code, currentLang);
 });
 
 document.addEventListener("mouseup", e => {
@@ -74,3 +78,92 @@ document.body.addEventListener("keydown", e => {
     localStorage.setItem("lang", $keyboard.dataset.lang);
   }
 });
+
+$textarea.focus();
+$textarea.addEventListener("blur", e => {
+  $textarea.focus();
+});
+
+let capsLock = false;
+
+function handleBtnPress(code, lang) {
+  if(code === "CapsLock") {
+    capsLock = !capsLock;
+    return;
+  }
+
+  if(code === "Backspace") {
+    const cursor = $textarea.selectionStart;
+    const value = $textarea.value;
+    $textarea.value = value.slice(0, cursor - 1) + value.slice(cursor);
+    $textarea.selectionStart = cursor - 1;
+    $textarea.selectionEnd = $textarea.selectionStart;
+    return;
+  }
+
+  if(code === "Delete") {
+    const cursor = $textarea.selectionStart;
+    const value = $textarea.value;
+    $textarea.value = value.slice(0, cursor) + value.slice(cursor + 1);
+    $textarea.selectionStart = cursor;
+    $textarea.selectionEnd = $textarea.selectionStart;
+    return;
+  }
+
+  if(code === "ArrowLeft") {
+    $textarea.selectionStart = Math.max($textarea.selectionStart - 1, 0)
+    $textarea.selectionEnd = $textarea.selectionStart;
+    return;
+  }
+
+  if(code === "ArrowRight") {
+    $textarea.selectionStart++;
+    $textarea.selectionEnd = $textarea.selectionStart;
+    return;
+  }
+
+  if(code === "ArrowUp") {
+    if($textarea.selectionStart < TEXT_AREA_WIDTH) {
+      $textarea.selectionStart = 0;
+    } else {
+      $textarea.selectionStart -= TEXT_AREA_WIDTH;
+    }
+    $textarea.selectionStart = Math.max(0, $textarea.selectionStart);
+    $textarea.selectionEnd = $textarea.selectionStart;
+    return;
+  }
+
+  if(code === "ArrowDown") {
+    $textarea.selectionStart += TEXT_AREA_WIDTH;
+    $textarea.selectionStart = Math.max(0, $textarea.selectionStart);
+    $textarea.selectionEnd = $textarea.selectionStart;
+    return;
+  }
+
+  const specialChars = {
+    Enter: "\n",
+    Space: " ",
+    Tab: "\t",
+  }
+
+  let char;
+
+  if(specialChars[code]) {
+    char = specialChars[code];
+  } else {
+    char = keys[code][lang].key;
+  }
+
+  if(!capsLock) char = char.toLowerCase();
+
+  let value = $textarea.value;
+  const cursor = $textarea.selectionStart;
+
+  $textarea.value = value.slice(0, cursor) + char + value.slice(cursor);
+  $textarea.selectionStart = cursor + 1;
+  $textarea.selectionEnd = $textarea.selectionStart;
+}
+
+setInterval(() => {
+  console.log($textarea.selectionStart)
+}, 500);

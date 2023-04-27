@@ -66,8 +66,9 @@
 }
 
 .keyboard-output {
-  width: 600px;
-  min-height: 300px;
+  min-height: 200px;
+  outline: none;
+  font-family: Lucida Console, monospace;
 }
 
 .switch-lang-hint {
