@@ -219,7 +219,7 @@ export default function createKeyboard() {
   return $keyboard;
 }
 
-export const keys = {
+export const keysByCodes = {
   Backquote: {
     eng: {
       key: "`",

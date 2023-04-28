@@ -28,6 +28,7 @@
 }
 
 .keyboard-btn {
+  transition: background-color 0.2s;
   position: relative;
   font-size: 18px;
   color: #ccc;

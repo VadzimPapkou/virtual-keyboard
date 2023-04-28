@@ -1,4 +1,4 @@
-import createKeyboard, {keys} from "./createKeyboard.js";
+import createKeyboard, {keysByCodes} from "./createKeyboard.js";
 import createTextarea, {TEXT_AREA_WIDTH} from "./createTextarea.js";
 import createSwitchLangHint from "./createHint.js";
 
@@ -151,7 +151,7 @@ function handleBtnPress(code, lang) {
   if(specialChars[code]) {
     char = specialChars[code];
   } else {
-    char = keys[code][lang].key;
+    char = keysByCodes[code][lang].key;
   }
 
   if(!capsLock) char = char.toLowerCase();
@@ -163,7 +163,3 @@ function handleBtnPress(code, lang) {
   $textarea.selectionStart = cursor + 1;
   $textarea.selectionEnd = $textarea.selectionStart;
 }
-
-setInterval(() => {
-  console.log($textarea.selectionStart)
-}, 500);
