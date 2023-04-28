@@ -1,6 +1,6 @@
 export default function createHint() {
-  const $hint = document.createElement("div");
-  $hint.className = "switch-lang-hint";
+  const $hint = document.createElement('div');
+  $hint.className = 'switch-lang-hint';
 
   $hint.innerHTML = `
     <h2>Change language</h2>
