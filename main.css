@@ -1,0 +1,88 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  font-family: Arial, sans-serif;
+}
+
+.keyboard {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(15, 50px);
+  grid-auto-rows: 50px;
+  grid-gap: 6px;
+}
+
+.keyboard [data-lang] {
+  display: none;
+}
+
+.keyboard[data-lang=eng] [data-lang=eng] {
+  display: block;
+}
+
+.keyboard[data-lang=rus] [data-lang=rus] {
+  display: block;
+}
+
+.keyboard-btn {
+  transition: background-color 0.2s;
+  position: relative;
+  font-size: 18px;
+  color: #ccc;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.keyboard-btn:hover:not(:active) {
+  filter: brightness(120%);
+}
+
+.keyboard-btn--2-columns {
+  grid-column: span 2;
+}
+
+.keyboard-btn--6-columns {
+  grid-column: span 6;
+}
+
+.keyboard-btn--service-btn {
+  color: #eee;
+  background-color: #555;
+}
+
+.keyboard-btn__additional-char {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 16px;
+}
+
+.keyboard-btn--pressed {
+  background-color: blue;
+  color: #fff;
+}
+
+.keyboard-output {
+  resize: none;
+  min-height: 200px;
+  outline: none;
+  font-family: Lucida Console, monospace;
+}
+
+.switch-lang-hint {
+  align-self: flex-end;
+}
+
+.switch-lang-hint > .keyboard-btn:nth-child(2) {
+  width: 100px;
+  height: 50px;
+}
+
+.switch-lang-hint > .keyboard-btn:nth-child(3) {
+  width: 50px;
+  height: 50px;
+}
