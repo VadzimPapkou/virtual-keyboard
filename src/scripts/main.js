@@ -1,5 +1,5 @@
 import createKeyboard, { keysByCodes } from './createKeyboard';
-import createTextarea, { TEXT_AREA_WIDTH } from './createTextarea';
+import createTextarea from './createTextarea';
 import createSwitchLangHint from './createHint';
 
 let capsLock = false;
@@ -33,6 +33,7 @@ function handleBtnPress(code, lang) {
 
   if (code === 'Backspace') {
     const cursor = $textarea.selectionStart;
+    if(cursor === 0) return;
     const { value } = $textarea;
     $textarea.value = value.slice(0, cursor - 1) + value.slice(cursor);
     $textarea.selectionStart = cursor - 1;
@@ -42,39 +43,10 @@ function handleBtnPress(code, lang) {
 
   if (code === 'Delete') {
     const cursor = $textarea.selectionStart;
+    if(cursor === $textarea.length) return;
     const { value } = $textarea;
     $textarea.value = value.slice(0, cursor) + value.slice(cursor + 1);
     $textarea.selectionStart = cursor;
-    $textarea.selectionEnd = $textarea.selectionStart;
-    return;
-  }
-
-  if (code === 'ArrowLeft') {
-    $textarea.selectionStart = Math.max($textarea.selectionStart - 1, 0);
-    $textarea.selectionEnd = $textarea.selectionStart;
-    return;
-  }
-
-  if (code === 'ArrowRight') {
-    $textarea.selectionStart += 1;
-    $textarea.selectionEnd = $textarea.selectionStart;
-    return;
-  }
-
-  if (code === 'ArrowUp') {
-    if ($textarea.selectionStart < TEXT_AREA_WIDTH) {
-      $textarea.selectionStart = 0;
-    } else {
-      $textarea.selectionStart -= TEXT_AREA_WIDTH;
-    }
-    $textarea.selectionStart = Math.max(0, $textarea.selectionStart);
-    $textarea.selectionEnd = $textarea.selectionStart;
-    return;
-  }
-
-  if (code === 'ArrowDown') {
-    $textarea.selectionStart += TEXT_AREA_WIDTH;
-    $textarea.selectionStart = Math.max(0, $textarea.selectionStart);
     $textarea.selectionEnd = $textarea.selectionStart;
     return;
   }
@@ -83,6 +55,10 @@ function handleBtnPress(code, lang) {
     Enter: '\n',
     Space: ' ',
     Tab: '\t',
+    ArrowLeft: '←',
+    ArrowRight: '→',
+    ArrowDown: '↓',
+    ArrowUp: '↑',
   };
 
   let char;
