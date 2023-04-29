@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "gh-pages": "^5.0.0",
+    "live-server": "^1.2.2",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  },
+  "homepage": "https://vadzimpapkou.github.io/virtual-keyboard/",
+  "scripts": {
+    "dev": "npx webpack serve --mode=development",
+    "deploy": "webpack --mode=production && gh-pages -d dist"
+  }
+}
