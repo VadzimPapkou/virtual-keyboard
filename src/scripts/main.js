@@ -48,10 +48,17 @@ function isOrInside($el, selector) {
 }
 
 function handleBtnPress(code, lang) {
-  if(code.startsWith('Alt') || code.startsWith("Control") || code.startsWith('Meta')) return;
+  if(code.startsWith('Alt') || code.startsWith('Meta')) return;
 
   if (code === 'CapsLock') {
     setCapsLock(!capsLock)
+    return;
+  }
+
+  if(code.startsWith('Control')) {
+    if(shift) {
+      $keyboard.dataset.lang = $keyboard.dataset.lang === "rus" ? "eng" : "rus";
+    }
     return;
   }
 
@@ -116,8 +123,6 @@ function handleBtnPress(code, lang) {
   $textarea.value = value.slice(0, cursor) + char + value.slice(cursor);
   $textarea.selectionStart = cursor + 1;
   $textarea.selectionEnd = $textarea.selectionStart;
-
-  setShift(false);
 }
 
 if (localStorage.getItem('lang')) {
@@ -138,11 +143,15 @@ for (let i = 0; i < keyboardBtns.length; i += 1) {
 }
 
 document.body.addEventListener('keydown', (e) => {
-  buttons[e.code].$el.classList.add('keyboard-btn--pressed');
+  if(buttons[e.code]) {
+    buttons[e.code].$el.classList.add('keyboard-btn--pressed');
+  }
 });
 
 document.body.addEventListener('keyup', (e) => {
-  buttons[e.code].$el.classList.remove('keyboard-btn--pressed');
+  if(buttons[e.code]) {
+    buttons[e.code].$el.classList.remove('keyboard-btn--pressed');
+  }
 });
 
 let $lastPressedBtn = null;
