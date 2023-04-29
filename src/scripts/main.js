@@ -48,6 +48,8 @@ function isOrInside($el, selector) {
 }
 
 function handleBtnPress(code, lang) {
+  if(code.startsWith('Alt') || code.startsWith("Control") || code.startsWith('Meta')) return;
+
   if (code === 'CapsLock') {
     setCapsLock(!capsLock)
     return;

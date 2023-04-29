@@ -342,14 +342,14 @@ export const keysByCodes = {
       additionalKey: '_',
     },
   },
-  Plus: {
+  Equal: {
     eng: {
-      key: '+',
-      additionalKey: '=',
+      key: '=',
+      additionalKey: '+',
     },
     rus: {
-      key: '+',
-      additionalKey: '=',
+      key: '=',
+      additionalKey: '+',
     },
   },
   Backspace: {
