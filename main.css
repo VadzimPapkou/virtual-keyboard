@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
   font-family: Arial, sans-serif;
 }
 
@@ -67,14 +66,16 @@
 }
 
 .keyboard-output {
-  resize: none;
-  min-height: 200px;
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
   outline: none;
   font-family: Lucida Console, monospace;
 }
 
 .switch-lang-hint {
   align-self: flex-end;
+  transform: scale(0.8);
 }
 
 .switch-lang-hint > .keyboard-btn:nth-child(2) {
