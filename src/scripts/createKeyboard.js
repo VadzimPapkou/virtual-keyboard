@@ -163,7 +163,10 @@ export default function createKeyboard() {
 </button>
   <button class="keyboard-btn keyboard-btn--2-columns keyboard-btn--service-btn" data-code="Enter">ENTER</button>
   <button class="keyboard-btn keyboard-btn--2-columns keyboard-btn--service-btn" data-code="ShiftLeft">Shift</button>
-  <button class="keyboard-btn" data-code="Backslash">\\</button>
+  <button class="keyboard-btn" data-code="Backslash">
+  \\
+  <span class="keyboard-btn__additional-char">/</span>
+  </button>
   <button class="keyboard-btn" data-code="KeyZ">
   <span data-lang="eng">Z</span>
   <span data-lang="rus">Я</span>
@@ -621,4 +624,12 @@ export const keysByCodes = {
       key: '.',
     },
   },
+  Backslash: {
+    eng: {
+      key: '\\'
+    },
+    rus: {
+      key: '/'
+    }
+  }
 };

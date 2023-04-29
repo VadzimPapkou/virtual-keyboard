@@ -4,6 +4,28 @@ import createSwitchLangHint from './createHint';
 
 let capsLock = false;
 
+const setCapsLock = value => {
+  capsLock = value;
+  if(capsLock) {
+    buttons.CapsLock.$el.classList.add("keyboard-btn--pressed");
+  } else {
+    buttons.CapsLock.$el.classList.remove("keyboard-btn--pressed");
+  }
+}
+
+let shift = false;
+
+const setShift = value => {
+  shift = value;
+  if(shift) {
+    buttons.ShiftLeft.$el.classList.add("keyboard-btn--pressed");
+    buttons.ShiftRight.$el.classList.add("keyboard-btn--pressed");
+  } else {
+    buttons.ShiftLeft.$el.classList.remove("keyboard-btn--pressed");
+    buttons.ShiftRight.$el.classList.remove("keyboard-btn--pressed");
+  }
+}
+
 const $keyboard = createKeyboard();
 const $textarea = createTextarea();
 const $switchLangHint = createSwitchLangHint();
@@ -27,7 +49,12 @@ function isOrInside($el, selector) {
 
 function handleBtnPress(code, lang) {
   if (code === 'CapsLock') {
-    capsLock = !capsLock;
+    setCapsLock(!capsLock)
+    return;
+  }
+
+  if(code.startsWith("Shift")) {
+    setShift(!shift);
     return;
   }
 
@@ -66,11 +93,19 @@ function handleBtnPress(code, lang) {
   if (specialChars[code]) {
     char = specialChars[code];
   } else {
-    char = keysByCodes[code][lang].key;
+    if(shift) {
+      char = keysByCodes[code][lang].additionalKey || keysByCodes[code][lang].key;
+    } else {
+      char = keysByCodes[code][lang].key;
+    }
   }
 
   if (!capsLock) {
     char = char.toLowerCase();
+  }
+
+  if(shift) {
+    char = char.toUpperCase();
   }
 
   const { value } = $textarea;
@@ -79,6 +114,8 @@ function handleBtnPress(code, lang) {
   $textarea.value = value.slice(0, cursor) + char + value.slice(cursor);
   $textarea.selectionStart = cursor + 1;
   $textarea.selectionEnd = $textarea.selectionStart;
+
+  setShift(false);
 }
 
 if (localStorage.getItem('lang')) {
@@ -115,12 +152,17 @@ document.addEventListener('mousedown', (e) => {
   }
 
   const $btn = btnOrNot;
+  const currentLang = $keyboard.dataset.lang;
+  const code = $btn.dataset.code;
+
+  handleBtnPress(code, currentLang);
+
+  const skipHighlightCodes = ["ShiftLeft", "ShiftRight", "CapsLock"];
+  if(skipHighlightCodes.includes(code)) {
+    return;
+  }
   $btn.classList.add('keyboard-btn--pressed');
   $lastPressedBtn = $btn;
-
-  const currentLang = $keyboard.dataset.lang;
-
-  handleBtnPress($btn.dataset.code, currentLang);
 });
 
 document.addEventListener('mouseup', () => {
