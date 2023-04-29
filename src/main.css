@@ -67,6 +67,7 @@
 }
 
 .keyboard-output {
+  resize: none;
   min-height: 200px;
   outline: none;
   font-family: Lucida Console, monospace;
