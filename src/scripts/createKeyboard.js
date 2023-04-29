@@ -626,10 +626,10 @@ export const keysByCodes = {
   },
   Backslash: {
     eng: {
-      key: '\\'
+      key: '\\',
     },
     rus: {
-      key: '/'
-    }
-  }
+      key: '/',
+    },
+  },
 };
